@@ -6,6 +6,20 @@
 * Die Erzeugung der KNXprod geschieht auf eigene Verantwortung!
 * Diese Firmware ist aktuell in Entwicklung (Version 0.1.0 - Proof of Concept)
 
+## Module
+
+Die OpenKNX Hue Bridge besteht aus folgenden Modulen:
+
+- [Basiseinstellungen](https://github.com/OpenKNX/OGM-Common/blob/v1/doc/Applikationsbeschreibung-Common.md)
+- [Netzwerk](https://github.com/OpenKNX/OFM-Network/blob/v1/doc/Applikationsbeschreibung-Netzwerk.md)
+- [Hue Bridge](https://github.com/estebanri87/OFM-HueBridgeModule/blob/v1/docs/Applikationsbeschreibung.md)
+- [Logik](https://github.com/OpenKNX/OFM-LogicModule/blob/v1/doc/Applikationsbeschreibung-Logik.md)
+- [Funktionsblöcke](https://github.com/OpenKNX/OFM-FunctionBlocks/blob/v1/doc/Applikationsbeschreibung-FunctionBlocks.md)
+
+
+
+
+
 ## Übersicht
 
 Die **OpenKNX Hue Bridge** ist eine Firmware für ESP32-basierte OpenKNX-Geräte, die Philips Hue Beleuchtungssysteme in KNX-Installationen integriert. Das Gerät verbindet sich mit einer vorhandenen Philips Hue Bridge und stellt die Hue-Lampen über KNX-Kommunikationsobjekte zur Verfügung.
