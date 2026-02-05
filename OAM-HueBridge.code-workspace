@@ -24,7 +24,12 @@
         {
             "path": "../OFM-Network"
         },
-
+        {
+            "path": "../OFM-HueBridgeModule"
+        },
+        {
+            "path": "../OGM-HardwareConfig"
+        }
     ],
     "settings": {
         "terminal.integrated.env.windows": {
