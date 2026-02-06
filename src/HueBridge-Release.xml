@@ -38,7 +38,7 @@
     NumChannels="20"
     KoOffset="501"
     KoBlockSize="9"
-    KoSingleOffset="500">
+    KoSingleOffset="480">
     <op:verify File="../lib/OFM-HueBridgeModule/library.json" ModuleVersion="%HUE_VerifyVersion%" />
   </op:define>
 
