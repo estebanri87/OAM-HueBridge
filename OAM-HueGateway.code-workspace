@@ -1,44 +1,34 @@
 {
     "folders": [
         {
-            "name": "OAM-HueGateway",
             "path": "."
         },
         {
-            "name": "OGM-Common",
-            "path": "../OGM-Common"
-        },
-        {
-            "name": "knx",
-            "path": "../knx"
-        },
-        {
-            "name": "OFM-HueGatewayModule",
-            "path": "../OFM-HueGatewayModule"
-        },
-        {
-            "name": "OFM-ConfigTransfer",
             "path": "../OFM-ConfigTransfer"
         },
         {
-            "name": "OFM-FileTransferModule",
             "path": "../OFM-FileTransferModule"
         },
         {
-            "name": "OFM-FunctionBlocks",
             "path": "../OFM-FunctionBlocks"
         },
         {
-            "name": "OFM-LogicModule",
+            "path": "../OFM-HueGatewayModule"
+        },
+        {
             "path": "../OFM-LogicModule"
         },
         {
-            "name": "OFM-Network",
             "path": "../OFM-Network"
         },
         {
-            "name": "OGM-HardwareConfig",
+            "path": "../OGM-Common"
+        },
+        {
             "path": "../OGM-HardwareConfig"
+        },
+        {
+            "path": "../knx"
         }
     ],
     "settings": {
