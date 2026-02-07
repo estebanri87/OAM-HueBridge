@@ -17,7 +17,7 @@
 #define ETS_ModuleId_HUE 4
 #define ETS_ModuleId_LOG 5
 #define ETS_ModuleId_FCB 6
-#define MAIN_FirmwareName "Hue Bridge (Beta)"
+#define MAIN_FirmwareName "Hue Gateway (Beta)"
 #define MAIN_OpenKnxId 0xAE
 #define MAIN_ApplicationNumber 42
 #define MAIN_ApplicationVersion 1

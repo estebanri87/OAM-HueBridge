@@ -4,7 +4,7 @@
 #include "FileTransferModule.h"
 #include "Logic.h"
 #include "FunctionBlocksModule.h"
-#include "HueBridgeModule.h"
+#include "HueGatewayModule.h"
 #include "pins_arduino.h"
 
 #if PROG_LED_PIN2
@@ -93,7 +93,7 @@ void setup()
   openknx.addModule(6, openknxFileTransferModule);
 #endif
   openknx.addModule(8, openknxFunctionBlocksModule);
-  openknx.addModule(9, openknxHueBridgeModule);  // Philips Hue Integration
+  openknx.addModule(9, openknxHueGatewayModule);  // Philips Hue Integration
   openknx.setup();
 
 #ifdef PROG_BUTTON_PIN2
