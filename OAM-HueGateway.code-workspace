@@ -4,12 +4,6 @@
             "path": "."
         },
         {
-            "path": "../OGM-Common"
-        },
-        {
-            "path": "../knx"
-        },
-        {
             "path": "../OFM-ConfigTransfer"
         },
         {
@@ -19,13 +13,16 @@
             "path": "../OFM-FunctionBlocks"
         },
         {
+            "path": "../OFM-HueGatewayModule"
+        },
+        {
             "path": "../OFM-LogicModule"
         },
         {
             "path": "../OFM-Network"
         },
         {
-            "path": "../OFM-HueBridgeModule"
+            "path": "../OGM-Common"
         },
         {
             "path": "../OGM-HardwareConfig"
