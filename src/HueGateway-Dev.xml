@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns="http://knx.org/xml/project/20" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" >
-
-  <op:config href="HueBridge.conf.xml" />
+ 
+  <op:config href="HueGateway.conf.xml" />
   
   <op:ETS
     OpenKnxId="0xAE"
-    ApplicationNumber="0x2A" 
-    ApplicationVersion="%ReleaseApplicationVersion%"
-    ReplacesVersions="%ReleaseReplacesVersions%"
+    ApplicationNumber="0x29" 
+    ApplicationVersion="0.1.0"
+    ReplacesVersions="0.0"
     ApplicationRevision="0"
-    ProductName="Hue Bridge"
+    ProductName="Hue Gateway"
     BusCurrent="10"
-    BuildSuffix="-Beta"
-    BuildSuffixText=" (Beta)"
+    BuildSuffix="-Debug"
+    BuildSuffixText=" (Debug)"
     MediumTypes="MT-0 MT-5"
-    OrderNumber="MGKnxHUE" />  
+    OrderNumber="MGKnxHUE" />
 
   <op:define prefix="BASE" ModuleType="10"
     share="../lib/OGM-Common/src/Common.share.xml">
@@ -33,14 +33,16 @@
   </op:define>
 
   <op:define prefix="HUE" ModuleType="14"
-    share="../lib/OFM-HueBridgeModule/src/HueBridgeModule.share.xml"
-    template="../lib/OFM-HueBridgeModule/src/HueBridgeModule.templ.xml"
+    share="../lib/OFM-HueGatewayModule/src/HueGatewayModule.share.xml"
+    template="../lib/OFM-HueGatewayModule/src/HueGatewayModule.templ.xml"
     NumChannels="20"
     KoOffset="501"
     KoBlockSize="9"
     KoSingleOffset="480">
-    <op:verify File="../lib/OFM-HueBridgeModule/library.json" ModuleVersion="%HUE_VerifyVersion%" />
+    <op:verify File="../lib/OFM-HueGatewayModule/library.json" ModuleVersion="%HUE_VerifyVersion%" />
   </op:define>
+
+  <!-- The bridge uses more than 100 channels. Do not use ModuleType 20 and 29 --> 
 
   <op:define prefix="LOG" ModuleType="10" 
   share="../lib/OFM-LogicModule/src/Logikmodul.share.xml" 

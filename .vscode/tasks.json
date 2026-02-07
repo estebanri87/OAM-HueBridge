@@ -20,7 +20,7 @@
             "args": [
                 "create",
                 "--Debug",
-                "Hue"
+                "HueGateway"
             ],
             "problemMatcher": [],
             "group": "test"

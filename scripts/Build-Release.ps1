@@ -38,16 +38,16 @@ if (!$?) { exit 1 }
 # ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_REG1_ETH SmartHomeBridge-Eth uf2
 # if (!$?) { exit 1 }
 
- ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_REG1_LAN_TP_BASE firmware-HueBridge-REG1-LAN-TP-Base esp32
+ ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_REG1_LAN_TP_BASE firmware-HueGateway-REG1-LAN-TP-Base esp32
  if (!$?) { exit 1 }
 
- #../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_REG1_LAN_BASE firmware-HueBridge-REG1-LAN-Base esp32
+ #../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_REG1_LAN_BASE firmware-HueGateway-REG1-LAN-Base esp32
  #if (!$?) { exit 1 }
 
- #../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Adafruit_Feather_ESP32_V2_TP firmware-HueBridge-Adafruit_Feather_ESP32_V2_TP esp32
+ #../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Adafruit_Feather_ESP32_V2_TP firmware-HueGateway-Adafruit_Feather_ESP32_V2_TP esp32
  #if (!$?) { exit 1 }
 
- #../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Adafruit_Feather_ESP32_V2_IP firmware-HueBridge-Adafruit_Feather_ESP32_V2_IP esp32
+ #../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_Adafruit_Feather_ESP32_V2_IP firmware-HueGateway-Adafruit_Feather_ESP32_V2_IP esp32
  #if (!$?) { exit 1 }
 
 # execute generic post-build steps

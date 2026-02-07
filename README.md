@@ -1,6 +1,6 @@
-# OpenKNX Hue Bridge
+# OpenKNX Hue Gateway
 
-Die OpenKNX Hue Bridge integriert Philips Hue Lampen in das KNX-System.
+Die OpenKNX Hue Gateway integriert Philips Hue Lampen in das KNX-System.
 
 ## Features
 

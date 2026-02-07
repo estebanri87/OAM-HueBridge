@@ -1,7 +1,7 @@
-# OpenKNX Hue Bridge - AI Coding Assistant Instructions
+# OpenKNX Hue Gateway - AI Coding Assistant Instructions
 
 ## Project Overview
-This is the **OpenKNX Hue Bridge** firmware for ESP32 devices that integrates Philips Hue lights into KNX home automation systems with bidirectional synchronization. Built on PlatformIO with the OpenKNX framework, it uses a modular architecture where functionality is split into reusable library modules.
+This is the **OpenKNX Hue Gateway** firmware for ESP32 devices that integrates Philips Hue lights into KNX home automation systems with bidirectional synchronization. Built on PlatformIO with the OpenKNX framework, it uses a modular architecture where functionality is split into reusable library modules.
 
 **Data Flow**: `Hue Bridge API ↔ ESP32/HueModule ↔ KNX Bus`
 
@@ -19,12 +19,12 @@ The firmware uses **OpenKNX modules** registered in [src/main.cpp](src/main.cpp)
 
 ### XML-Driven Configuration (OpenKNXproducer)
 **Key concept**: ETS configuration is defined in XML, NOT manually coded:
-- [src/HueBridge.xml](src/HueBridge.xml) (or HueBridge-Dev.xml/HueBridge-Release.xml variants) defines the KNX product structure
-- [src/HueBridge.conf.xml](src/HueBridge.conf.xml) contains build-specific configuration values referenced by `<op:config>` tag
+- [src/HueGateway.xml](src/HueGateway.xml) (or HueGateway-Dev.xml/HueGateway-Release.xml variants) defines the KNX product structure
+- [src/HueGateway.conf.xml](src/HueGateway.conf.xml) contains build-specific configuration values referenced by `<op:config>` tag
 - Uses `<op:define>` to include modules with `.share.xml` and `.templ.xml` from lib directories
 - Example: `<op:define prefix="HUE" ModuleType="14" share="../lib/OFM-HueModule/src/HueModule.share.xml" NumChannels="20" KoOffset="1010">`
 - `OpenKNXproducer` generates [include/knxprod.h](include/knxprod.h) with parameter/KO defines
-- Run via task: "OpenKNXproducer" (calls `~/bin/OpenKNXproducer.exe create --Debug HueBridge` from src directory)
+- Run via task: "OpenKNXproducer" (calls `~/bin/OpenKNXproducer.exe create --Debug HueGateway` from src directory)
 - Generated defines follow pattern: `HUE_ParamBridgeIP`, `KoHUE_ChannelSwitch`, etc.
 - `<op:verify>` blocks enforce module version compatibility (e.g., `ModuleVersion="%HUE_VerifyVersion%"`)
 
@@ -47,13 +47,13 @@ pio run -e develop_ESP32_USB
 - Task: "Build-Beta" → runs [scripts/Build-Release.ps1](scripts/Build-Release.ps1)
 - Task: "Build-Release" → runs `scripts/Build-Release.ps1 Release`
 - These scripts call `lib/OGM-Common/scripts/setup/reusable/Build-Release-Preprocess.ps1` then build multiple firmware variants
-- Project name defined in [scripts/OpenKNX-Build-Settings.ps1](scripts/OpenKNX-Build-Settings.ps1) (should be "HueBridge", not "SmartHomeBridge")
+- Project name defined in [scripts/OpenKNX-Build-Settings.ps1](scripts/OpenKNX-Build-Settings.ps1) (should be "HueGateway", not "SmartHomeBridge")
 - Builds produce `.bin` files for ESP32 (or `.uf2` for RP2040)
 
 **KNXprod generation:** 
-1. Run task "OpenKNXproducer" to generate `src/HueBridge.h`
-2. Manually copy to include: `Copy-Item src\HueBridge.h -Destination include\knxprod.h -Force`
-3. Verify correct product name in knxprod.h (should be "Hue Bridge", not "Smart Home Bridge")
+1. Run task "OpenKNXproducer" to generate `src/HueGateway.h`
+2. Manually copy to include: `Copy-Item src\HueGateway.h -Destination include\knxprod.h -Force`
+3. Verify correct product name in knxprod.h (should be "Hue Gateway", not "Smart Home Bridge")
 
 ### Dependencies
 - PlatformIO libraries managed via `platformio.ini` `extra_configs` that include base configurations from `lib/OGM-Common/platformio.*.ini`
@@ -84,8 +84,8 @@ pio run -e develop_ESP32_USB
 ### Multi-Language Support
 - German documentation (README, Applikationsbeschreibung.md)
 - ETS descriptions support ISO-8859-1/15 encoding via OpenKNXproducer
-HueBridge-Dev.xml/HueBridge-Release.xml for specific builds)
-- [src/HueBridge.conf.xml](src/HueBridge.conf.xml): Build configuration values (application numbers, version strings, etc.)
+HueGateway-Dev.xml/HueGateway-Release.xml for specific builds)
+- [src/HueGateway.conf.xml](src/HueGateway.conf.xml): Build configuration values (application numbers, version strings, etc.)
 - [include/knxprod.h](include/knxprod.h): Generated - NEVER edit manually
 - [include/hardware.h](include/hardware.h): Hardware pin definitions (includes `HardwareConfig.h` from lib/OGM-HardwareConfig)
 - [platformio.ini](platformio.ini): Points to OGM-Common base configs
@@ -104,13 +104,13 @@ HueBridge-Dev.xml/HueBridge-Release.xml for specific builds)
 
 **Error: `#error "OpenKNXproducer 3.12.8.0 or higher is required"`**
 - **Cause**: `include/knxprod.h` is stale or wasn't updated after running OpenKNXproducer
-- **Fix**: Run OpenKNXproducer task, then manually copy: `Copy-Item src\HueBridge.h -Destination include\knxprod.h -Force`
-- **Root cause**: OpenKNXproducer generates `src/HueBridge.h` but may not copy it to `include/knxprod.h`
+- **Fix**: Run OpenKNXproducer task, then manually copy: `Copy-Item src\HueGateway.h -Destination include\knxprod.h -Force`
+- **Root cause**: OpenKNXproducer generates `src/HueGateway.h` but may not copy it to `include/knxprod.h`
 
 **Error: Missing defines like `ParamFCB_CHFormatStringStr`**
-- **Cause**: Same as above - knxprod.h not updated from HueBridge.h
-- **Verification**: Check if `src/HueBridge.h` has correct content (e.g., "Hue Bridge" product name, correct module IDs)
-- Compare timestamps: `Get-Item src\HueBridge.h, include\knxprod.h | Select LastWriteTime, Name`
+- **Cause**: Same as above - knxprod.h not updated from HueGateway.h
+- **Verification**: Check if `src/HueGateway.h` has correct content (e.g., "Hue Gateway" product name, correct module IDs)
+- Compare timestamps: `Get-Item src\HueGateway.h, include\knxprod.h | Select LastWriteTime, Name`
 
 **Error: `FileNotFoundError: git not found` during build**
 - **Cause**: Build script `lib/OGM-Common/scripts/pio/prepare.py` requires git in PATH
@@ -124,22 +124,22 @@ HueBridge-Dev.xml/HueBridge-Release.xml for specific builds)
 - **Fix**: Remove duplicate from platformio.custom.ini if desired
 
 ### XML & Configuration
-- **Don't edit knxprod.h** - regenerate via OpenKNXproducer task, then copy from src/HueBridge.h
+- **Don't edit knxprod.h** - regenerate via OpenKNXproducer task, then copy from src/HueGateway.h
 - **Don't skip XML module verification** - `<op:verify>` blocks ensure library version compatibility
 - **Module IDs must be unique** - collision causes initialization failure
 - **KO offsets matter** - defined per module in XML to avoid conflicts
-- **Wrong XML file processed**: Check task uses `HueBridge` (not `Hue`, `Bridge` or `SmartHomeBridge`) as argument
+- **Wrong XML file processed**: Check task uses `HueGateway` (not `Hue`, `Gateway` or `SmartHomeBridge`) as argument
 
 ### Hardware & Runtime
 - **GPIO1 special handling** - used for Serial TX on ESP32, requires explicit Serial.end() before GPIO use
 - **Watchdog resets**: Disable with `-D OPENKNX_WATCHDOG=0` in build_flags for debugging
 
 ## Integration Points
-  - See [lib/OFM-HueModule/.github/copilot-instructions.md](lib/OFM-HueModule/.github/copilot-instructions.md) for module-specific details
+  - See [lib/OFM-HueGatewayModule/.github/copilot-instructions.md](lib/OFM-HueGatewayModule/.github/copilot-instructions.md) for module-specific details
 - **Network**: Ethernet (NET module) or WiFi (WLAN module) conditionally compiled based on `NET_ModuleVersion` and `WLAN_WifiSSID` defines
 - **HomeSpan**: HomeKit integration (v2.1.2) - limit of 41 devices (`ESPALEXA_MAXDEVICES=41`)
 - **Web Server**: ESPAsyncWebServer for HTTP endpoints (bridge discovery, configuration)
-- **Hue Bridge Integration**: OFM-HueModule in `lib/OFM-HueModule/` handles Hue API v2 (not v1) communication
+- **Hue Gateway Integration**: OFM-HueGatewayModule in `lib/OFM-HueGatewayModule/` handles Hue API v2 (not v1) communication
   - Authentication via button-press flow (`POST /api` with app-key generation)
   - Real-time updates via Server-Sent Events (SSE) on `/eventstream/clip/v2`
   - mDNS discovery for `_hue._tcp.local` service
